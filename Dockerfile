@@ -1,5 +1,5 @@
 # Use an official OpenJDK runtime as a base image
-FROM openjdk:17-jdk
+FROM openjdk:27-ea-nanoserver-ltsc2025
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
