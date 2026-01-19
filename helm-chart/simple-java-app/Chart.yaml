@@ -1,7 +1,0 @@
-apiVersion: v2
-name: simple-java-app
-description: A Helm chart for deploying Java App to EKS
-type: application
-version: 0.1.0
-appVersion: "1.0"
-
