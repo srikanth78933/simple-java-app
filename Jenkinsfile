@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'project-1', url: 'https://github.com/sreekanth78933/simple-java-app.git'
+                git branch: 'jenkins-shared-library', url: 'https://github.com/srikanth78933/simple-java-app.git'
             }
         }
 
