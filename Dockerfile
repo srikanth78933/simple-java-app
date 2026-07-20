@@ -1,5 +1,7 @@
-# Use an official OpenJDK runtime as a base image
-FROM openjdk:17-jdk-alpine
+# openjdk:* images were deprecated and removed from Docker Hub entirely -
+# eclipse-temurin is the actively-maintained successor (same OpenJDK build,
+# different publisher).
+FROM eclipse-temurin:17-jdk-alpine
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
