@@ -5,7 +5,12 @@
 
     <groupId>com.example</groupId>
     <artifactId>simple-java-app</artifactId>
-    <version>1.0</version>
+    <!-- SNAPSHOT, not a fixed "1.0": Nexus release repos reject redeploying
+         an existing release version outright (400 "cannot be updated"),
+         which broke the very next pipeline run after the first successful
+         deploy. Nexus snapshot repos are designed to accept the same
+         version repeatedly. -->
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging> <!-- JAR packaging -->
 
     <properties>
@@ -45,5 +50,9 @@
             <id>nexus-releases</id> <!-- Match this ID with the settings.xml -->
             <url>http://52.91.244.128:8081/repository/maven-releases/</url>
         </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id> <!-- Match this ID with the settings.xml -->
+            <url>http://52.91.244.128:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
     </distributionManagement>
 </project>
