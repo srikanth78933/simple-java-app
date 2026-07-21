@@ -43,7 +43,7 @@
     <distributionManagement>
         <repository>
             <id>nexus-releases</id> <!-- Match this ID with the settings.xml -->
-            <url>http://184.72.212.211:8081/repository/java-package/</url>
+            <url>http://184.72.212.211:8081/repository/maven-releases/</url>
         </repository>
     </distributionManagement>
 </project>
