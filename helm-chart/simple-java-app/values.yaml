@@ -1,0 +1,46 @@
+replicaCount: 2
+
+image:
+  repository: devopstraining064/project4-demo-dockerimage
+  tag: "33"
+  pullPolicy: IfNotPresent
+
+containerPort: 8080
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 250m
+    memory: 256Mi
+
+probes:
+  path: /
+  initialDelaySeconds: 10
+  periodSeconds: 10
+
+config:
+  APP_ENV: "production"
+  APP_DEBUG: "false"
+
+# Override at deploy time, e.g. --set secret.databasePassword=<value>
+# so real credentials never live in this file.
+secret:
+  databasePassword: "changeme"
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 50
+
+ingress:
+  enabled: false
+  className: alb
+  host: myapp.example.com
