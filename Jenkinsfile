@@ -22,6 +22,7 @@ pipeline {
 
         stage('Build Application') {
             steps {
+                sh 'mvn versions:set -DnewVersion=1.0.$BUILD_NUMBER -DgenerateBackupPoms=false'
                 sh 'mvn clean package'
             }
         }
