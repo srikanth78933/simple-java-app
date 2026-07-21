@@ -7,10 +7,12 @@ pipeline {
     }
 
     environment {
-        DOCKER_IMAGE = 'devopstraining064/project4-demo-dockerimage'
-        IMAGE_TAG    = "${env.BUILD_NUMBER}"
-        EKS_CLUSTER  = 'mycompany-dev-eks'
-        AWS_REGION   = 'us-east-1'
+        DOCKER_IMAGE          = 'devopstraining064/project4-demo-dockerimage'
+        IMAGE_TAG             = "${env.BUILD_NUMBER}"
+        EKS_CLUSTER           = 'mycompany-dev-eks'
+        AWS_REGION            = 'us-east-1'
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
 
     stages {
@@ -52,7 +54,7 @@ pipeline {
 
         stage('Push Docker Image to Docker Hub') {
             steps {
-                withDockerRegistry(credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/') {
+                withDockerRegistry(credentialsId: 'dockerhub-credentials', url: 'https://index.docker.io/v1/') {
                     sh 'docker push $DOCKER_IMAGE:$IMAGE_TAG'
                 }
             }
